@@ -16,8 +16,11 @@ export default function JSXTransform(tag, attrs, ...children) {
 
     /**
      * applying attributes to the nodeElement (such as funcs/name/type/etc..) 
+     * for (let attr in attrs) { 
+           node.setAttribute(attr,attrs[attr]) || node.addEventListener(attr, attrs[attr]); 
+       } 
     */
-    for (let attr in attrs) { node.setAttribute(attr,attrs[attr]); } 
+        Object.assign(node,attrs);
     /** End of applying Attributes */
 
     /**
