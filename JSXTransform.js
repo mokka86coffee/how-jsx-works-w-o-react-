@@ -16,11 +16,13 @@ export default function JSXTransform(tag, attrs, ...children) {
 
     /**
      * applying attributes to the nodeElement (such as funcs/name/type/etc..) 
-     * for (let attr in attrs) { 
-           node.setAttribute(attr,attrs[attr]) || node.addEventListener(attr, attrs[attr]); 
-       } 
+     * it seems like data/aria attributes don't assign as it suppose to be,
+     * so the best way is to loop through (obj) and set them
     */
-        Object.assign(node,attrs);
+    for (let attr in attrs) { 
+        if ((/^(data|aria)/g).test(attr)) { node.setAttribute(attr,attrs[attr]); }
+        else { Object.assign(node,attrs[attr]); }
+    } 
     /** End of applying Attributes */
 
     /**
