@@ -7,7 +7,7 @@ export default function JSXTransform(tag, attrs, ...children) {
          * if we've got Class or Function "tag",
          *  we need to apply its method to get HTML
          */
-        ? (new tag()).create()  
+        ? (new tag()).createHTML()  
         /**
          * create JS DOM element from "tag" variable
          */
