@@ -6,10 +6,11 @@ export default function JSXTransform(tag, attrs, ...children) {
         /**
          * if we've got Class or Function "tag",
          * we need to apply its method to get HTML
-         * 
+         * JSX is smart enough for 'render()' method,
+         * you can implement Class as Function, if it has one
          */
-        ? (new tag()).createHTML()  //Class
-        //? tag() //Function
+        ? (new tag()).createHTML()  // Class
+        //? tag() // Function
         /**
          * create JS DOM element from "tag" variable
          */
