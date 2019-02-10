@@ -20,8 +20,8 @@ export default function JSXTransform(tag, attrs, ...children) {
      * so the best way is to loop through (obj) and set them
     */
     for (let attr in attrs) { 
-        if ((/^(data|aria)/g).test(attr)) { node.setAttribute(attr,attrs[attr]); }
-        else { Object.assign(node,attrs[attr]); }
+        if ((/^(data|aria)/g).test(attr)) { node.setAttribute(attr,attrs[attr]) }
+        else { Object.assign(node, {[attr]:attrs[attr]}) }
     } 
     /** End of applying Attributes */
 
