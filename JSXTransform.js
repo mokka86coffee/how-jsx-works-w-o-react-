@@ -2,12 +2,14 @@ export default function JSXTransform(tag, attrs, ...children) {
     /**
      * Checking if we receive usual html Tag or smth else
      */
-    let node = typeof tag == 'function' 
+    let node = typeof tag === 'function' 
         /**
          * if we've got Class or Function "tag",
-         *  we need to apply its method to get HTML
+         * we need to apply its method to get HTML
+         * 
          */
-        ? (new tag()).createHTML()  
+        ? (new tag()).createHTML()  //Class
+        //? tag() //Function
         /**
          * create JS DOM element from "tag" variable
          */
@@ -30,7 +32,7 @@ export default function JSXTransform(tag, attrs, ...children) {
      * then appending them to the "tag" Node
      */
     children.forEach(elem=>{
-        if (elem instanceof String) {
+        if (typeof elem === 'string') {
             node.append(document.createTextNode(elem))
         }  else { node.append(elem) }
     });
